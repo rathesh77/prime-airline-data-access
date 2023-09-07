@@ -1,4 +1,4 @@
-const FlightService = require("../services/flightService");
+const FlightService = require("../services/FlightService");
 const express = require('express')
 
 const router = express.Router();
