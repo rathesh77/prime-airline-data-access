@@ -7,3 +7,4 @@ class AirportDto {
         this.acronym = data.acronym;
     }
 }
+module.exports = AirportDto

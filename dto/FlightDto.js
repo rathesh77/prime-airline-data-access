@@ -9,3 +9,5 @@ class FlightDto {
         this.airPortArrival = data.airPortArrival;
     }
 }
+
+module.exports = FlightDto

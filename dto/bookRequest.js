@@ -7,3 +7,5 @@ class BookRequest {
         this.userId = data.userId;
     }
 }
+
+module.exports = BookRequest
