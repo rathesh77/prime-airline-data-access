@@ -2,28 +2,27 @@ const FlightDto = require("../dto/FlightDto")
 
 class FlightService {
 
-  static getFlights() {
+    static flights = [
+        new FlightDto({
+          'id': 1,
+          'airportDeparture': 'CDG',
+          'airportArrival': 'JFK'
+        }),
+        new FlightDto({
+          'id': 2,
+          'airportDeparture': 'CDG',
+          'airportArrival': 'DTW'
+        }),
+        new FlightDto({
+          'id': 1,
+          'airportDeparture': 'JFK',
+          'airportArrival': 'DTW'
+        }),
+      ]
 
-    const flights = [
-      new FlightDto({
-        'id': 1,
-        'airportDeparture': 'CDG',
-        'airportArrival': 'JFK'
-      }),
-      new FlightDto({
-        'id': 2,
-        'airportDeparture': 'CDG',
-        'airportArrival': 'DTW'
-      }),
-      new FlightDto({
-        'id': 1,
-        'airportDeparture': 'JFK',
-        'airportArrival': 'DTW'
-      }),
-    ]
-
-    return flights
-  }
+    static getFlights() {
+        return FlightService.flights;
+    }
 }
 
 module.exports = FlightService
