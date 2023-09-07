@@ -6,17 +6,20 @@ class FlightService {
         new FlightDto({
           'id': 1,
           'airportDeparture': 'CDG',
-          'airportArrival': 'JFK'
+          'airportArrival': 'JFK',
+          'price' : 1500,
         }),
         new FlightDto({
           'id': 2,
           'airportDeparture': 'CDG',
-          'airportArrival': 'DTW'
+          'airportArrival': 'DTW',
+          'price' : 1700,
         }),
         new FlightDto({
           'id': 3,
           'airportDeparture': 'JFK',
-          'airportArrival': 'DTW'
+          'airportArrival': 'DTW',
+          'price' : 300,
         }),
       ]
 
