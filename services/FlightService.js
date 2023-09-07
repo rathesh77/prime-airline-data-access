@@ -14,7 +14,7 @@ class FlightService {
           'airportArrival': 'DTW'
         }),
         new FlightDto({
-          'id': 1,
+          'id': 3,
           'airportDeparture': 'JFK',
           'airportArrival': 'DTW'
         }),
