@@ -6,7 +6,7 @@ const InMemoryData = require("../utils/inMemoryData");
 const router = express.Router();
 
 router.get('/flights', async (req, res)=> {
-    const { currency } = req.query;
+    const { currency, date } = req.query;
     if (currency === undefined) {
         res.status(400)
         res.send({
@@ -15,6 +15,7 @@ router.get('/flights', async (req, res)=> {
         })
         return
     }
+<<<<<<< HEAD
     const flights = (await FlightService.getFlights(currency)).map(f => {
         const discounts = InMemoryData.discounts.filter(d => d.flight.id === f.id).map((d) => {
             const discountPrice = f.price -  (f.price  * (d.percent / 100))
@@ -26,6 +27,9 @@ router.get('/flights', async (req, res)=> {
         return {...f, discounts}
     })
     res.send(flights)
+=======
+    res.send(await FlightService.getFlights(currency, date))
+>>>>>>> 782db0d... manage dates on flights
 })
 
 router.post('/book', (req, res)=> {

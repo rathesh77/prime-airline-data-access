@@ -6,7 +6,7 @@ const InMemoryData = require("../utils/inMemoryData");
 class BookService {
 
     static createBook(bookRequest) {
-        const {flightId, userId} = bookRequest;
+        const {flightId, userId, date } = bookRequest;
         if (FlightService.getAvailableSeats(flightId) == 0) {
             return null;
         }
@@ -14,8 +14,10 @@ class BookService {
         InMemoryData.books.push(book);
         InMemoryData.bookingHistory.push({
             flightId,
+            date
         });
         const flight = InMemoryData.flights.find(flight => flight.id == book.flightId);
+        flight.date = date;
         return new BookDto({userId: book.userId, flight});
     }
 }

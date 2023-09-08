@@ -29,8 +29,6 @@ class InMemoryData {
       'price': 700,
       'seats' : 2,
       'date': '07/07/2O22'
-
-
     }),
     new FlightDto({
       'id': 3,
@@ -54,6 +52,7 @@ class InMemoryData {
       percent: 10
     }
   ]
+  
 } 
 
 module.exports = InMemoryData
