@@ -16,6 +16,7 @@ router.post('/book', (req, res)=> {
             'code': 'NO_AVAILABLE_SEATS',
             'message': 'There is no available seats for this flight.'
         })
+        return;
     }
     res.send(book);
 })
