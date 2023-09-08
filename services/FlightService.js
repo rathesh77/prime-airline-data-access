@@ -1,4 +1,5 @@
-const InMemoryData = require("../utils/inMemoryData")
+const InMemoryData = require("../utils/inMemoryData");
+const CurrencyService = require("./CurrencyService");
 
 class FlightService {
 
@@ -8,14 +9,20 @@ class FlightService {
     return flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length;
   }
 
-    static getFlights() {
-
+    static async getFlights(currencyFromRequest) {
+      const { currency } = currencyFromRequest;
+      let currencyRate = await CurrencyService.getCurrencyRate(currency);
       const flights = [...InMemoryData.flights]
       return flights.map(flight => {
-        return ({
+        const newFlight = {
           ...flight,
+          price: flight.price * +currencyRate
+        }
+        console.log(newFlight);
+        return ({
+          ...newFlight,
           seats: flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length
-      })
+        })
       })
     }
 }

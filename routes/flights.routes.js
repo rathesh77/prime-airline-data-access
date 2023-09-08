@@ -4,8 +4,8 @@ const express = require('express')
 
 const router = express.Router();
 
-router.get('/flights', (req, res)=> {
-    res.send(FlightService.getFlights())
+router.get('/flights', async (req, res)=> {
+    res.send(await FlightService.getFlights(req.query))
 })
 
 router.post('/book', (req, res)=> {
