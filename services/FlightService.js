@@ -9,8 +9,7 @@ class FlightService {
     return flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length;
   }
 
-    static async getFlights(currencyFromRequest) {
-      const { currency } = currencyFromRequest;
+    static async getFlights(currency) {
       let currencyRate = await CurrencyService.getCurrencyRate(currency);
       const flights = [...InMemoryData.flights]
       return flights.map(flight => {
