@@ -15,16 +15,8 @@ router.get('/flights', async (req, res)=> {
         })
         return
     }
-    const flights = (await FlightService.getFlights(currency)).map(f => {
-        const discounts = InMemoryData.discounts.filter(d => d.flight.id === f.id).map((d) => {
-            const discountPrice = f.price -  (f.price  * (d.percent / 100))
-            
-            let discount = {...d, discountPrice }
-            return discount
-        })
-        
-        return {...f, discounts}
-    })
+    const flights = await FlightService.getFlights(currency)
+    
     res.send(flights)
 })
 

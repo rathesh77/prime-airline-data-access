@@ -7,7 +7,7 @@ class BookService {
 
     static createBook(bookRequest) {
         const {flightId, userId, date } = bookRequest;
-        if (FlightService.getAvailableSeats(flightId) == 0) {
+        if (FlightService.getAvailableSeats(flightId, date) == 0) {
             return null;
         }
         const book = new BookRequest({flightId, userId});
