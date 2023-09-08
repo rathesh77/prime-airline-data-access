@@ -51,7 +51,7 @@ class InMemoryData {
     {
       flight: InMemoryData.flights.find(flight => flight.id === 1),
       escale: 'DTW',
-      percent: 0.1
+      percent: 10
     }
   ]
 } 
