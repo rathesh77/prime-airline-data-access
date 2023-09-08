@@ -20,7 +20,9 @@ class InMemoryData {
       'airportArrival': 'JFK',
       'price': 1000,
       'seats' : 2,
-      'date': '06/07/2O22'
+      'date': '',
+      'isLongDuration': true,
+      'meals': ['veggie', 'chips', 'polloSandwich', 'pasta']
     }),
     new FlightDto({
       'id': 2,
@@ -28,7 +30,9 @@ class InMemoryData {
       'airportArrival': 'DTW',
       'price': 700,
       'seats' : 2,
-      'date': '07/07/2O22'
+      'date': '',
+      'isLongDuration': true,
+      'meals': ['veggie', 'chips', 'polloSandwich', 'pasta']
     }),
     new FlightDto({
       'id': 3,
@@ -36,8 +40,9 @@ class InMemoryData {
       'airportArrival': 'DTW',
       'price': 300,
       'seats' : 2,
-      'date': '08/07/2O22'
-
+      'date': '',
+      'isLongDuration': false,
+      'meals': []
     }),
   ]
 
@@ -52,7 +57,6 @@ class InMemoryData {
       percent: 10
     }
   ]
-  
 } 
 
 module.exports = InMemoryData

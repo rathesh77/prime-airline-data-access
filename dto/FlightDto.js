@@ -7,6 +7,8 @@ class FlightDto {
     seats;
     date;
     discounts;
+    isLongDuration;
+    meals;
 
     constructor(data) {
         this.id = data.id;
@@ -16,6 +18,8 @@ class FlightDto {
         this.price = data.price;
         this.date = data.date;
         this.discounts = data.discounts;
+        this.isLongDuration = data.isLongDuration;
+        this.meals = data.meals;
 
     }
 }
