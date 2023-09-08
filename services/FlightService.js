@@ -15,7 +15,7 @@ class FlightService {
       return flights.map(flight => {
         const newFlight = {
           ...flight,
-          price: flight.price * +currencyRate
+          price: (flight.price * +currencyRate).toFixed(2)
         }
         console.log(newFlight);
         return ({
