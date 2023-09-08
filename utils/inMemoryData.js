@@ -1,6 +1,18 @@
 const FlightDto = require("../dto/FlightDto")
+const axios = require('axios');
+const https = require('https');
+const xml2js = require('xml2js');
 
 class InMemoryData {
+
+  static CURRENCY_API_URL = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+
+  static currencies = (async()=>{
+    let dataXml = await axios.get(InMemoryData.CURRENCY_API_URL);
+    let parser = new xml2js.Parser();
+    return (await parser.parseStringPromise(dataXml.data))['gesmes:Envelope'].Cube[0].Cube[0].Cube
+  })()
+
   static flights = [
     new FlightDto({
       'id': 1,
@@ -30,6 +42,7 @@ class InMemoryData {
 
     }),
   ]
+
   static books = [];
 
   static bookingHistory = []
