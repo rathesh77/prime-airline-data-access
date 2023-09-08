@@ -9,7 +9,15 @@ router.get('/flights', (req, res)=> {
 })
 
 router.post('/book', (req, res)=> {
-    res.send(BookService.createBook(req.body));
+    const book = BookService.createBook(req.body)
+    if (!book) {
+        res.status(409)
+        res.send({
+            'code': 'NO_AVAILABLE_SEATS',
+            'message': 'There is no available seats for this flight.'
+        })
+    }
+    res.send(book);
 })
 
 module.exports = router

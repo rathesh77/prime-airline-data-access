@@ -1,18 +1,21 @@
 const BookRequest = require("../dto/BookRequest");
-const fs = require('fs');
 const FlightService = require("./FlightService");
 const BookDto = require("../dto/BookDto");
+const InMemoryData = require("../utils/inMemoryData");
 
 class BookService {
 
-    static books = [];
-
     static createBook(bookRequest) {
         const {flightId, userId} = bookRequest;
+        if (FlightService.getAvailableSeats(flightId) == 0) {
+            return null;
+        }
         const book = new BookRequest({flightId, userId});
-        BookService.books.push(book);
-
-        const flight = FlightService.flights.find(flight => flight.id == book.flightId);
+        InMemoryData.books.push(book);
+        InMemoryData.bookingHistory.push({
+            flightId,
+        });
+        const flight = InMemoryData.flights.find(flight => flight.id == book.flightId);
         return new BookDto({userId: book.userId, flight});
     }
 }

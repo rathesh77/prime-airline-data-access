@@ -1,30 +1,22 @@
-const FlightDto = require("../dto/FlightDto")
+const InMemoryData = require("../utils/inMemoryData")
 
 class FlightService {
 
-    static flights = [
-        new FlightDto({
-          'id': 1,
-          'airportDeparture': 'CDG',
-          'airportArrival': 'JFK',
-          'price' : 1000,
-        }),
-        new FlightDto({
-          'id': 2,
-          'airportDeparture': 'CDG',
-          'airportArrival': 'DTW',
-          'price' : 700,
-        }),
-        new FlightDto({
-          'id': 3,
-          'airportDeparture': 'JFK',
-          'airportArrival': 'DTW',
-          'price' : 300,
-        }),
-      ]
+  static getAvailableSeats(flightId) {
+    const flight = InMemoryData.flights.find(flight => flight.id == flightId);
+
+    return flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length;
+  }
 
     static getFlights() {
-        return FlightService.flights;
+
+      const flights = [...InMemoryData.flights]
+      return flights.map(flight => {
+        return ({
+          ...flight,
+          seats: flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length
+      })
+      })
     }
 }
 
