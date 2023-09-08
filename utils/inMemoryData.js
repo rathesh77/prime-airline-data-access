@@ -46,6 +46,14 @@ class InMemoryData {
   static books = [];
 
   static bookingHistory = []
+
+  static discounts = [
+    {
+      flight: InMemoryData.flights.find(flight => flight.id === 1),
+      escale: 'DTW',
+      percent: 0.1
+    }
+  ]
 } 
 
 module.exports = InMemoryData

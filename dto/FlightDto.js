@@ -1,11 +1,12 @@
 class FlightDto {
     id;
     airportDeparture;
-    airPortArrival;
+    airportArrival;
     price;
     planeId;
     seats;
     date;
+    discounts;
 
     constructor(data) {
         this.id = data.id;
@@ -14,6 +15,7 @@ class FlightDto {
         this.seats = data.seats;
         this.price = data.price;
         this.date = data.date;
+        this.discounts = data.discounts;
 
     }
 }

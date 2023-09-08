@@ -1,6 +1,7 @@
 const FlightService = require("../services/FlightService");
 const BookService = require("../services/BookService");
-const express = require('express')
+const express = require('express');
+const InMemoryData = require("../utils/inMemoryData");
 
 const router = express.Router();
 
@@ -14,7 +15,10 @@ router.get('/flights', async (req, res)=> {
         })
         return
     }
-    res.send(await FlightService.getFlights(currency))
+    const flights = (await FlightService.getFlights(currency)).map(f => {
+        return {...f, discounts: InMemoryData.discounts.filter(d => d.flight.id === f.id)}
+    })
+    res.send(flights)
 })
 
 router.post('/book', (req, res)=> {

@@ -17,7 +17,6 @@ class FlightService {
           ...flight,
           price: (flight.price * +currencyRate).toFixed(2)
         }
-        console.log(newFlight);
         return ({
           ...newFlight,
           seats: flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id)).length
