@@ -1,3 +1,5 @@
+import DiscountDto from "./DiscountDto";
+
 type Flight = {
     id: number, 
     airportDeparture: string, 
@@ -5,9 +7,9 @@ type Flight = {
     seats: number, 
     price: number, 
     date?: string, 
-    discounts?: Array<any>, 
+    discounts?: Array<DiscountDto>, 
     isLongDuration?: boolean, 
-    meals?: Array<any>, 
+    meals?: Array<string>, 
     planeId: number
 }
 

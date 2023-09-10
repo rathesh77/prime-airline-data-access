@@ -31,7 +31,7 @@ class FlightService {
     return flight.seats - InMemoryData.bookingHistory.filter(((book: BookDto) => book.flightId == flight.id && date == book.date)).length;
   }
 
-  static createNewFlight(flight: FlightDto, data: any) {
+  static createNewFlight(flight: FlightDto, data: Partial<FlightDto>) {
     return new FlightDto({
       ...flight,
       ...data
