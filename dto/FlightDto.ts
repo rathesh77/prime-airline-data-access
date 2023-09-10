@@ -1,3 +1,16 @@
+type Flight = {
+    id: number, 
+    airportDeparture: string, 
+    airportArrival: string, 
+    seats: number, 
+    price: number, 
+    date?: string, 
+    discounts?: Array<any>, 
+    isLongDuration?: boolean, 
+    meals?: Array<any>, 
+    planeId: number
+}
+
 class FlightDto {
     id;
     airportDeparture;
@@ -10,7 +23,7 @@ class FlightDto {
     isLongDuration;
     meals;
 
-    constructor(data) {
+    constructor(data: Flight) {
         this.id = data.id;
         this.airportDeparture = data.airportDeparture;
         this.airportArrival = data.airportArrival;
@@ -20,8 +33,9 @@ class FlightDto {
         this.discounts = data.discounts;
         this.isLongDuration = data.isLongDuration;
         this.meals = data.meals;
+        this.planeId = data.planeId;
 
     }
 }
 
-module.exports = FlightDto
+export default FlightDto
