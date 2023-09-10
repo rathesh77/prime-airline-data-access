@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "compile": "npx tsc",
-    "start": "npm run compile && nodemon dist/index.js",
+    "start": "npx tsc && nodemon dist/index.js",
     "eslint-fix": "npx eslint --fix ./dtos/* routes/* services/* utils/* index.ts"
   },
   "dependencies": {
