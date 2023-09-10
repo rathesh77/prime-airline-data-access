@@ -1,6 +1,6 @@
-import FlightDto from "../dto/FlightDto";
-import FlightService from "./FlightService";
-import BookDto from "../dto/BookDto";
+import FlightDto from "../dtos/flight.dto";
+import FlightService from "./flight.service";
+import BookDto from "../dtos/book.dto";
 import InMemoryData from "../utils/InMemoryData";
 
 class BookService {

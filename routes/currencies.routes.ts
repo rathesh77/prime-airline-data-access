@@ -1,5 +1,5 @@
 import express from 'express';
-import CurrencyService from '../services/CurrencyService';
+import CurrencyService from '../services/currency.service';
 import { Request, Response } from 'express';
 
 const router = express.Router();

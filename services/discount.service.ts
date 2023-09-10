@@ -1,4 +1,4 @@
-import FlightDto from "../dto/FlightDto"
+import FlightDto from "../dtos/flight.dto"
 import InMemoryData from "../utils/InMemoryData"
 
 

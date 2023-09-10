@@ -1,4 +1,4 @@
-import FlightDto from "./FlightDto";
+import FlightDto from "./flight.dto";
 
 type Book = {
     userId: number,

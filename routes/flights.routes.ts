@@ -1,7 +1,7 @@
 import express from 'express';
 import { Request, Response } from 'express';
-import FlightService from "../services/FlightService";
-import BookService from "../services/BookService";
+import FlightService from "../services/flight.service";
+import BookService from "../services/book.service";
 
 const router = express.Router();
 

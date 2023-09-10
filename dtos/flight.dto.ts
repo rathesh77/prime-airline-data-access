@@ -1,4 +1,4 @@
-import DiscountDto from "./DiscountDto";
+import DiscountDto from "./discount.dto";
 
 type Flight = {
     id: number, 

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import xml2js from 'xml2js';
-import DiscountDto from "../dto/DiscountDto";
-import FlightDto from "../dto/FlightDto";
-import BookDto from "../dto/BookDto";
+import DiscountDto from "../dtos/discount.dto";
+import FlightDto from "../dtos/flight.dto";
+import BookDto from "../dtos/book.dto";
 
 class InMemoryData {
 

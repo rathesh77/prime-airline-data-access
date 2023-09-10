@@ -1,8 +1,8 @@
-import BookDto from "../dto/BookDto";
-import FlightDto from "../dto/FlightDto";
+import BookDto from "../dtos/book.dto";
+import FlightDto from "../dtos/flight.dto";
 import InMemoryData from "../utils/InMemoryData";
-import CurrencyService from "./CurrencyService";
-import DiscountService from "./DiscountService";
+import CurrencyService from "./currency.service";
+import DiscountService from "./discount.service";
 
 class FlightService {
 
