@@ -1,3 +1,4 @@
+const FlightDto = require("../dto/FlightDto");
 const InMemoryData = require("../utils/inMemoryData");
 const CurrencyService = require("./CurrencyService");
 const DiscountService = require("./DiscountService");
@@ -6,15 +7,11 @@ class FlightService {
 
   static async getFlights(currency, date) {
     let currencyRate = await CurrencyService.getCurrencyRate(currency);
-    let flights = [...InMemoryData.flights]
-    flights = flights.map(flight => {
+    let flights = [...InMemoryData.flights].map(flight => {
       const newPrice = (flight.price * +currencyRate).toFixed(2)
-      const newFlight = FlightService.createNewFlight(flight, newPrice, date);
-
-      return {
-        ...newFlight,
-        seats: FlightService.getAvailableSeats(flight.id, date)
-      }
+      const seats =  FlightService.getAvailableSeats(flight.id, date)
+      const newFlight = FlightService.createNewFlight(flight, {price: newPrice, date, seats});
+      return newFlight
     })
 
     return DiscountService.getDiscountForFlights(flights);
@@ -26,12 +23,12 @@ class FlightService {
     return flight.seats - InMemoryData.bookingHistory.filter((book => book.flightId == flight.id && date == book.date)).length;
   }
 
-  static createNewFlight(flight, price, date) {
-    return {
+  static createNewFlight(flight, data) {
+    return new FlightDto({
       ...flight,
-      price,
-      date
-    }
+      ...data
+    })
+      
 
   }
 

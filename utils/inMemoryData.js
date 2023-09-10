@@ -52,7 +52,7 @@ class InMemoryData {
 
   static discounts = [
     {
-      flight: InMemoryData.flights.find(flight => flight.id === 1),
+      flightId: InMemoryData.flights.find(flight => flight.id === 1).id,
       escale: 'DTW',
       percent: 10
     }
