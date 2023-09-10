@@ -15,7 +15,7 @@ router.get('/flights', async (req, res)=> {
         })
         return
     }
-    const flights = await FlightService.getFlights(currency)
+    const flights = await FlightService.getFlights(currency, date)
     
     res.send(flights)
 })
