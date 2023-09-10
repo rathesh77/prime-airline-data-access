@@ -4,12 +4,12 @@ type Airport = {
 }
 
 class AirportDto {
-    name: string;
-    acronym: string;
+  name: string;
+  acronym: string;
 
-    constructor(data: Airport) {
-        this.name = data.name;
-        this.acronym = data.acronym;
-    }
+  constructor(data: Airport) {
+    this.name = data.name;
+    this.acronym = data.acronym;
+  }
 }
 export default AirportDto;

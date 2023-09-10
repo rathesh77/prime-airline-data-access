@@ -4,16 +4,16 @@ type Discount = {
   percent: number
 }
 class DiscountDto {
-    flightId;
-    escale;
-    percent;
+  flightId;
+  escale;
+  percent;
 
-    constructor(data: Discount) {
-        this.flightId = data.flightId;
-        this.escale = data.escale;
-        this.percent = data.percent;
+  constructor(data: Discount) {
+    this.flightId = data.flightId;
+    this.escale = data.escale;
+    this.percent = data.percent;
 
-    }
+  }
 }
 
 export default DiscountDto;

@@ -6,39 +6,39 @@ import DiscountService from './discount.service';
 
 class FlightService {
 
-    static async getFlights(currency: string, date: string) {
-        const currencyRate = await CurrencyService.getCurrencyRate(currency);
-        if (currencyRate == null) {
-            throw 'invalid currency';
-        }
-
-        const flights = [...InMemoryData.flights].map(flight => {
-            const newPrice = +(flight.price * +currencyRate).toFixed(2);
-            const seats = FlightService.getAvailableSeats(flight.id, date);
-            const newFlight = FlightService.createNewFlight(flight, { price: newPrice, date, seats });
-            return newFlight;
-        });
-
-        return DiscountService.getDiscountForFlights(flights);
+  static async getFlights(currency: string, date: string) {
+    const currencyRate = await CurrencyService.getCurrencyRate(currency);
+    if (currencyRate == null) {
+      throw 'invalid currency';
     }
 
-    static getAvailableSeats(flightId: number, date: string) {
-        const flight = InMemoryData.flights.find((flight: FlightDto) => flight.id == flightId);
+    const flights = [...InMemoryData.flights].map(flight => {
+      const newPrice = +(flight.price * +currencyRate).toFixed(2);
+      const seats = FlightService.getAvailableSeats(flight.id, date);
+      const newFlight = FlightService.createNewFlight(flight, { price: newPrice, date, seats });
+      return newFlight;
+    });
 
-        if (!flight)
-            return 0;
+    return DiscountService.getDiscountForFlights(flights);
+  }
 
-        return flight.seats - InMemoryData.bookingHistory.filter(((book: BookDto) => book.flightId == flight.id && date == book.date)).length;
-    }
+  static getAvailableSeats(flightId: number, date: string) {
+    const flight = InMemoryData.flights.find((flight: FlightDto) => flight.id == flightId);
 
-    static createNewFlight(flight: FlightDto, data: Partial<FlightDto>) {
-        return new FlightDto({
-            ...flight,
-            ...data
-        });
+    if (!flight)
+      return 0;
+
+    return flight.seats - InMemoryData.bookingHistory.filter(((book: BookDto) => book.flightId == flight.id && date == book.date)).length;
+  }
+
+  static createNewFlight(flight: FlightDto, data: Partial<FlightDto>) {
+    return new FlightDto({
+      ...flight,
+      ...data
+    });
 
 
-    }
+  }
 
 }
 
