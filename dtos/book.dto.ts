@@ -1,5 +1,3 @@
-import FlightDto from "./flight.dto";
-
 type Book = {
     userId: number,
     flightId: number,

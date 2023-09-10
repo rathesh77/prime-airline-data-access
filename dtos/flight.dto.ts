@@ -1,4 +1,4 @@
-import DiscountDto from "./discount.dto";
+import DiscountDto from './discount.dto';
 
 type Flight = {
     id: number, 
@@ -40,4 +40,4 @@ class FlightDto {
     }
 }
 
-export default FlightDto
+export default FlightDto;

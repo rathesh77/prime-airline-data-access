@@ -12,4 +12,4 @@ class AirportDto {
         this.acronym = data.acronym;
     }
 }
-export default AirportDto
+export default AirportDto;
