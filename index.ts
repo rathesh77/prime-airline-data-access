@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import flightRouter from './routes/flights.routes.js';
-import currencyRouter from './routes/currencies.routes.js';
+import flightRouter from './routes/flights.routes';
+import currencyRouter from './routes/currencies.routes';
 
 const app = express();
 
