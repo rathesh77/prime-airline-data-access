@@ -54,11 +54,11 @@ class InMemoryData {
   static bookingHistory: BookDto[] = [];
 
   static discounts: DiscountDto[] = [
-    {
+    new DiscountDto({
       flightId: InMemoryData.flights.find(flight => flight.id === 1)?.id,
       escale: 'DTW',
       percent: 10
-    }
+    })
   ];
 }
 
