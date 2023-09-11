@@ -1,22 +1,24 @@
+import CurrencyDto from '../dtos/currency.dto';
 import InMemoryData from '../utils/InMemoryData';
 
 class CurrencyService {
 
-  static async getAllCurrencies() {
+  static async getAllCurrencies(): Promise<CurrencyDto[]> {
     const currencies = await InMemoryData.currencies;
-    return currencies.map((currency: any) => {
-      return currency['$'].currency;
+    return currencies.map((_currency: {'$': CurrencyDto}) => {
+      const {currency, rate} = _currency['$'];
+      return {currency, rate};
     });
   }
 
-  static async getCurrencyRate(currencyFromRequest: string) {
+  static async getCurrencyRate(currencyFromRequest: string): Promise<string | null> {
     const currency = currencyFromRequest;
-    const currencies = await InMemoryData.currencies;
-    const foundCurrency = currencies.find((currencyToLoop: any) => { return currencyToLoop['$'].currency == currency; });
+    const currencies = await CurrencyService.getAllCurrencies();
+    const foundCurrency = currencies.find((currencyToLoop: CurrencyDto) => { return currencyToLoop.currency == currency; });
     if (!foundCurrency)
       return null;
 
-    return foundCurrency['$'].rate;
+    return foundCurrency.rate;
   }
 
 }

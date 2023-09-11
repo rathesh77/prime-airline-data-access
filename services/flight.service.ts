@@ -6,7 +6,7 @@ import DiscountService from './discount.service';
 
 class FlightService {
 
-  static async getFlights(currency: string, date: string) {
+  static async getFlights(currency: string, date: string): Promise<FlightDto[]> {
     const currencyRate = await CurrencyService.getCurrencyRate(currency);
     if (currencyRate == null) {
       throw 'invalid currency';
@@ -22,7 +22,7 @@ class FlightService {
     return DiscountService.getDiscountForFlights(flights);
   }
 
-  static getAvailableSeats(flightId: number, date: string) {
+  static getAvailableSeats(flightId: number, date: string): number {
     const flight = InMemoryData.flights.find((flight: FlightDto) => flight.id == flightId);
 
     if (!flight)
@@ -31,7 +31,7 @@ class FlightService {
     return flight.seats - InMemoryData.bookingHistory.filter(((book: BookDto) => book.flightId == flight.id && date == book.date)).length;
   }
 
-  static createNewFlight(flight: FlightDto, data: Partial<FlightDto>) {
+  static createNewFlight(flight: FlightDto, data: Partial<FlightDto>): FlightDto {
     return new FlightDto({
       ...flight,
       ...data

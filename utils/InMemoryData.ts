@@ -14,7 +14,7 @@ class InMemoryData {
     return (await parser.parseStringPromise(dataXml.data))['gesmes:Envelope'].Cube[0].Cube[0].Cube;
   })();
 
-  static flights: Array<FlightDto> = [
+  static flights: FlightDto[] = [
     new FlightDto({
       'id': 1,
       'airportDeparture': 'CDG',
@@ -51,9 +51,9 @@ class InMemoryData {
   ];
 
 
-  static bookingHistory: Array<BookDto> = [];
+  static bookingHistory: BookDto[] = [];
 
-  static discounts: Array<DiscountDto> = [
+  static discounts: DiscountDto[] = [
     {
       flightId: InMemoryData.flights.find(flight => flight.id === 1)?.id,
       escale: 'DTW',

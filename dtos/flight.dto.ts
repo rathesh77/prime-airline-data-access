@@ -7,9 +7,9 @@ type Flight = {
     seats: number, 
     price: number, 
     date?: string, 
-    discounts?: Array<DiscountDto>, 
+    discounts?: DiscountDto[], 
     isLongDuration?: boolean, 
-    meals?: Array<string>, 
+    meals?: string[], 
     planeId: number
 }
 

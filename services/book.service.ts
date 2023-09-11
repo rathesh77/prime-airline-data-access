@@ -5,7 +5,7 @@ import InMemoryData from '../utils/InMemoryData';
 
 class BookService {
 
-  static createBook(bookRequest: BookDto) {
+  static createBook(bookRequest: BookDto): BookDto | null {
     const { flightId, userId, date } = bookRequest;
     if (FlightService.getAvailableSeats(flightId, date) == 0) {
       return null;
