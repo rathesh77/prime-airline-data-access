@@ -1,4 +1,3 @@
-import FlightDto from '../dtos/flight.dto';
 import FlightService from './flight.service';
 import BookDto from '../dtos/book.dto';
 import InMemoryData from '../utils/InMemoryData';
@@ -11,7 +10,7 @@ class BookService {
     
     const book = new BookDto(bookRequest);
     InMemoryData.bookingHistory.push(book);
-    const flight = InMemoryData.flights.find((flight: FlightDto) => flight.id == book.flightId);
+    const flight = InMemoryData.flights.find(flight => flight.id == book.flightId);
     if (!flight)
       throw 'error';
     

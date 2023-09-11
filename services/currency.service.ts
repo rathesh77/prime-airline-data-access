@@ -13,7 +13,7 @@ class CurrencyService {
 
   static async getCurrencyRate(currencyFromRequest: string): Promise<string | null> {
     const currencies = await CurrencyService.getAllCurrencies();
-    const foundCurrency = currencies.find((currencyToLoop: CurrencyDto) => { return currencyToLoop.currency == currencyFromRequest; });
+    const foundCurrency = currencies.find(currencyToLoop => { return currencyToLoop.currency == currencyFromRequest; });
     if (!foundCurrency)
       return null;
 
