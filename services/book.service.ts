@@ -6,17 +6,15 @@ import InMemoryData from '../utils/InMemoryData';
 class BookService {
 
   static createBook(bookRequest: BookDto): BookDto | null {
-    const { flightId, userId, date } = bookRequest;
-    if (FlightService.getAvailableSeats(flightId, date) == 0) {
+    if (FlightService.getAvailableSeats(bookRequest.flightId, bookRequest.date) == 0)
       return null;
-    }
-    const book: BookDto = new BookDto({ flightId, userId, date });
+    
+    const book = new BookDto(bookRequest);
     InMemoryData.bookingHistory.push(book);
     const flight = InMemoryData.flights.find((flight: FlightDto) => flight.id == book.flightId);
-    if (!flight) {
+    if (!flight)
       throw 'error';
-    }
-    flight.date = date;
+    
     return book;
   }
 }

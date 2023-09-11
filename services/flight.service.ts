@@ -8,10 +8,9 @@ class FlightService {
 
   static async getFlights(currency: string, date: string): Promise<FlightDto[]> {
     const currencyRate = await CurrencyService.getCurrencyRate(currency);
-    if (currencyRate == null) {
+    if (currencyRate == null)
       throw 'invalid currency';
-    }
-
+    
     const flights = [...InMemoryData.flights].map(flight => {
       const newPrice = +(flight.price * +currencyRate).toFixed(2);
       const seats = FlightService.getAvailableSeats(flight.id, date);
@@ -36,8 +35,6 @@ class FlightService {
       ...flight,
       ...data
     });
-
-
   }
 
 }
