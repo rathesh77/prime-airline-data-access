@@ -23,7 +23,12 @@ class InMemoryData {
       'seats': 2,
       'date': '',
       'isLongDuration': true,
-      'meals': ['veggie', 'chips', 'polloSandwich', 'pasta'],
+      'meals': [
+        {'name': 'veggie', 'quantity': 45}, 
+        {'name': 'chips', 'quantity': 10},
+        {'name': 'polloSandwich', 'quantity': 8},
+        {'name':  'pasta', 'quantity': 30}
+      ],
       'planeId': 1
     }),
     new FlightDto({
@@ -34,7 +39,12 @@ class InMemoryData {
       'seats': 2,
       'date': '',
       'isLongDuration': true,
-      'meals': ['veggie', 'chips', 'polloSandwich', 'pasta'],
+      'meals': [
+        {'name': 'veggie', 'quantity': 5}, 
+        {'name': 'chips', 'quantity': 10},
+        {'name': 'polloSandwich', 'quantity': 80},
+        {'name':  'pasta', 'quantity': 30}
+      ],
       'planeId': 2
     }),
     new FlightDto({

@@ -1,4 +1,5 @@
 import DiscountDto from './discount.dto';
+import MealDto from './meal.dto';
 
 type Flight = {
     id: number, 
@@ -9,7 +10,7 @@ type Flight = {
     date?: string, 
     discounts?: DiscountDto[], 
     isLongDuration?: boolean, 
-    meals?: string[], 
+    meals?: MealDto[], 
     planeId: number
 }
 
