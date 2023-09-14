@@ -5,7 +5,7 @@ export default function mustNotBeAuthenticated(req: express.Request, res: expres
     res.status(400);
     res.send({
       'code': 'MUST_NOT_BE_AUTHENTICATED',
-      'message': 'User not must be authenticated'
+      'message': 'User must not be authenticated'
     });
     return;
   }
