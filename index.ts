@@ -25,7 +25,10 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(userRouter);
 app.use(bookRouter);
