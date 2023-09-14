@@ -22,6 +22,7 @@ router.post('/login', mustNotBeAuthenticated, async (req: Request, res: Response
   }
   const userRequest = UserService.getUserByEmailAndPassword(email, password);
   if (!userRequest) {
+    res.status(400);
     res.json('user not found');
     return;
   }
