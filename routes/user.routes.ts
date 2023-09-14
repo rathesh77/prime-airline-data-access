@@ -15,6 +15,7 @@ router.get('/me',mustBeAuthenticated, async (req: Request, res: Response) => {
 router.post('/login', mustNotBeAuthenticated, async (req: Request, res: Response) => {
   const {email, password} = req.body;
   if (!email || !password) {
+    res.status(400);
     res.json('invalid payload');
     return;
     
