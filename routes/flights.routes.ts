@@ -1,10 +1,11 @@
 import express from 'express';
 import { Request, Response } from 'express';
 import FlightService from '../services/flight.service';
+import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
 
 const router = express.Router();
 
-router.get('/flights', async (req: Request, res: Response) => {
+router.get('/flights', mustBeAuthenticated, async (req: Request, res: Response) => {
   const currency: string = req.query.currency as string;
   const date: string = req.query.date as string;
 

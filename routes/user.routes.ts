@@ -1,12 +1,12 @@
 import express from 'express';
-import CurrencyService from '../services/currency.service';
 import { Request, Response } from 'express';
 import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
+import UserService from '../services/user.service';
 
 const router = express.Router();
 
-router.get('/currencies',mustBeAuthenticated, async (req: Request, res: Response) => {
-  res.send(await CurrencyService.getAllCurrencies());
+router.get('/me',mustBeAuthenticated, async (req: Request, res: Response) => {
+  res.send(await UserService.getMe(+req.session.userId!));
 });
 
 export default router;

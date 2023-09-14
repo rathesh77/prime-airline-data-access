@@ -11,7 +11,7 @@ class DiscountService {
         const discountPrice = +(price - (price * (discount.percent / 100))).toFixed(2);
         return { ...discount, discountPrice };
       });
-      return new FlightDto({ ...flight, discounts });
+      return { ...flight, discounts, 'titi': 'toto' } as FlightDto;
     });
   }
 }

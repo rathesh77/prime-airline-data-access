@@ -3,6 +3,7 @@ import xml2js from 'xml2js';
 import DiscountDto from '../dtos/discount.dto';
 import FlightDto from '../dtos/flight.dto';
 import BookDto from '../dtos/book.dto';
+import UserDto from '../dtos/user.dto';
 
 class InMemoryData {
 
@@ -69,6 +70,10 @@ class InMemoryData {
       escale: 'DTW',
       percent: 10
     })
+  ];
+
+  static users: UserDto[] = [
+
   ];
 }
 

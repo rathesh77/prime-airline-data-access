@@ -16,6 +16,10 @@ class BookService {
     
     return book;
   }
+
+  static getBookingHistory(userId: string): BookDto[] {
+    return InMemoryData.bookingHistory.filter((bookingHistory) => bookingHistory.userId === userId); 
+  }
 }
 
 export default BookService;
