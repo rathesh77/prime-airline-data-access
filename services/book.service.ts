@@ -17,7 +17,7 @@ class BookService {
     return book;
   }
 
-  static getBookingHistory(userId: string): BookDto[] {
+  static getBookingHistory(userId: number): BookDto[] {
     return InMemoryData.bookingHistory.filter((bookingHistory) => bookingHistory.userId === userId); 
   }
 }

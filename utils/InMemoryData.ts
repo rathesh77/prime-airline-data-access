@@ -3,7 +3,7 @@ import xml2js from 'xml2js';
 import DiscountDto from '../dtos/discount.dto';
 import FlightDto from '../dtos/flight.dto';
 import BookDto from '../dtos/book.dto';
-import UserDto from '../dtos/user.dto';
+import { UserRequest } from '../request/user.request';
 
 class InMemoryData {
 
@@ -72,7 +72,7 @@ class InMemoryData {
     })
   ];
 
-  static users: UserDto[] = [
+  static users: UserRequest[] = [
 
   ];
 }

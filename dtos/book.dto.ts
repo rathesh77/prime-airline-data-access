@@ -1,5 +1,5 @@
 type Book = {
-    userId: string,
+    userId: number,
     flightId: number,
     date: string
 }
