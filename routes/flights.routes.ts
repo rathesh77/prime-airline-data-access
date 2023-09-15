@@ -1,42 +1,46 @@
 import express from 'express';
 import { Request, Response } from 'express';
 import FlightService from '../services/flight.service';
-import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
 
 const router = express.Router();
 
-router.get('/flights', mustBeAuthenticated, async (req: Request, res: Response) => {
-  const currency: string = req.query.currency as string;
-  const date: string = req.query.date as string;
-
-  if (currency === undefined) {
-    res.status(400);
-    res.send({
-      'code': 'CURRENCY_IS_MANDATORY',
-      'message': 'Currency must be specified in the query'
-    });
-    return;
-  }
-
-  if (date === undefined) {
-    res.status(400);
-    res.send({
-      'code': 'DATE_IS_MANDATORY',
-      'message': 'Date must be specified in the query'
-    });
-    return;
-  }
-
+router.get('/flights/available-seats', async (req: Request, res: Response) => {
   try {
-    const flights = await FlightService.getFlights(currency, date);
-    res.send(flights);
+    
+    let flightId: number = 0;
+    if (req.query.flightId != undefined) {
+      flightId = +req.query.flightId;
+    }
+
+    if (typeof flightId !== 'number'){
+      res.status(400);
+      return;
+    }
+    if (typeof req.query.date !== 'string') {
+      res.status(400);
+      return;
+    }
+
+    const flights = await FlightService.getAvailableSeats(flightId, req.query.date);
+    const flightSeats = {flight: flights};
+    res.send(flightSeats);
   } catch (e) {
     res.send({
       'code': 'ERROR',
       'message': e
     });
   }
+});
 
+router.get('/flights', async (req: Request, res: Response) => {
+  try {
+    res.send(await FlightService.getFlights());
+  } catch (e) {
+    res.send({
+      'code': 'ERROR',
+      'message': e
+    });
+  }
 });
 
 export default router;

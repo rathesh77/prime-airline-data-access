@@ -19,10 +19,9 @@ router.post('/book', mustBeAuthenticated, (req: Request, res: Response) => {
 });
 
 router.get('/booking-history', mustBeAuthenticated, (req: Request, res: Response) => {
-  const bookingHistory = BookService.getBookingHistory(req.session.userId!);
+  const bookingHistory = BookService.getBookingHistory(+req.session.userId!);
  
   res.send(bookingHistory);
 });
-
 
 export default router;

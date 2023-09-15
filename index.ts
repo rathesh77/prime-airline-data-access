@@ -6,6 +6,7 @@ import flightRouter from './routes/flights.routes';
 import currencyRouter from './routes/currencies.routes';
 import bookRouter from './routes/book.routes';
 import userRouter from './routes/user.routes';
+import discountRouter from './routes/discounts.routes';
 
 import session from 'express-session';
 
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use(userRouter);
 app.use(bookRouter);
 app.use(flightRouter);
+app.use(discountRouter);
 app.use(currencyRouter);
 
 app.listen(8080, function (){
