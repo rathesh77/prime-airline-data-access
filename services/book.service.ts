@@ -17,8 +17,14 @@ class BookService {
     return book;
   }
 
-  static getBookingHistory(userId: number): BookDto[] {
-    return InMemoryData.bookingHistory.filter((bookingHistory) => bookingHistory.userId === userId); 
+  static getBookingHistory(userId: number) {
+    return InMemoryData.bookingHistory.filter((bookingHistory) => bookingHistory.userId === userId).map((bookingHistory) => {
+      return ({
+        flight: InMemoryData.flights.find((f) => f.id ===bookingHistory.flightId ),
+        date: bookingHistory.date
+      });
+    }
+    );
   }
 }
 
