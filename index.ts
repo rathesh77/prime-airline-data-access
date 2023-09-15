@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -38,8 +38,8 @@ app.use(discountRouter);
 app.use(currencyRouter);
 
 app.get('/health', (_, res: Response) => {
-  res.sendStatus(200)
-})
+  res.sendStatus(200);
+});
 
 app.listen(8080, function (){
   console.log('app is listening on port 8080');
