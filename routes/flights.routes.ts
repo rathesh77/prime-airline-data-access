@@ -21,7 +21,7 @@ router.get('/flights/available-seats', async (req: Request, res: Response) => {
       return;
     }
 
-    const flights = await FlightService.getAvailableSeats(flightId, req.query.date);
+    const flights = FlightService.getAvailableSeats(flightId, req.query.date);
     const flightSeats = {flight: flights};
     res.send(flightSeats);
   } catch (e) {
@@ -34,7 +34,7 @@ router.get('/flights/available-seats', async (req: Request, res: Response) => {
 
 router.get('/flights', async (req: Request, res: Response) => {
   try {
-    res.send(await FlightService.getFlights());
+    res.send(FlightService.getFlights());
   } catch (e) {
     res.send({
       'code': 'ERROR',
