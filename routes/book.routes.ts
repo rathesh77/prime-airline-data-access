@@ -6,9 +6,9 @@ import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
 const router = express.Router();
 
 router.post('/book', mustBeAuthenticated, (req: Request, res: Response) => {
-  const book = BookService.createBook(req.body);
+  const book = BookService.createBook(req.body.book);
   if (!book) {
-    res.status(409);
+    res.status(200);
     res.send({
       'code': 'NO_AVAILABLE_SEATS',
       'message': 'There is no available seats for this flight.'
