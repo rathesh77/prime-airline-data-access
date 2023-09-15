@@ -5,8 +5,8 @@ export default function mustNotBeAuthenticated(req: express.Request, res: expres
   if (req.session.userId) {
     res.status(400);
     res.send({
-      'code': 'MUST_NOT_BE_AUTHENTICATED',
-      'message': 'User must not be authenticated'
+      'code': 'USER_ALREADY_AUTHENTICATED',
+      'message': 'User is already authenticated'
     });
     return;
   }
