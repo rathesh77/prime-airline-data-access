@@ -1,7 +1,6 @@
 import express from 'express';
 import { Request, Response } from 'express';
 import BookService from '../services/book.service';
-import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
 
 const router = express.Router();
 

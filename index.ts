@@ -8,7 +8,6 @@ import bookRouter from './routes/book.routes';
 import userRouter from './routes/user.routes';
 import discountRouter from './routes/discounts.routes';
 
-import session from 'express-session';
 
 const app = express();
 
