@@ -5,7 +5,7 @@ import mustBeAuthenticated from '../middlewares/mustBeAuthenticated';
 
 const router = express.Router();
 
-router.post('/book', mustBeAuthenticated, (req: Request, res: Response) => {
+router.post('/book', (req: Request, res: Response) => {
   const book = BookService.createBook(req.body.book);
   if (!book) {
     res.status(200);
@@ -18,7 +18,7 @@ router.post('/book', mustBeAuthenticated, (req: Request, res: Response) => {
   res.send(book);
 });
 
-router.get('/booking-history', mustBeAuthenticated, (req: Request, res: Response) => {
+router.get('/booking-history', (req: Request, res: Response) => {
   const bookingHistory = BookService.getBookingHistory(+req.session.userId!);
  
   res.send(bookingHistory);

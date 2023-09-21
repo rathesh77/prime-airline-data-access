@@ -18,13 +18,6 @@ declare module 'express-session' {
     userId: number ;
   }
 }
-//app.set('trust proxy', 1); // trust first proxy
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
 
 app.use(cors({
   origin: 'http://localhost:3000',
