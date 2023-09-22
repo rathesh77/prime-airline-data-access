@@ -2,8 +2,8 @@ import axios from 'axios';
 import xml2js from 'xml2js';
 import DiscountDto from '../dtos/discount.dto';
 import FlightDto from '../dtos/flight.dto';
-import BookDto from '../dtos/book.dto';
 import { UserRequest } from '../request/user.request';
+import { bookingHistoryDto } from '../dtos/bookingHistory.dto';
 
 class InMemoryData {
 
@@ -62,7 +62,7 @@ class InMemoryData {
   ];
 
 
-  static bookingHistory: BookDto[] = [];
+  static bookingHistory: bookingHistoryDto[] = [];
 
   static discounts: DiscountDto[] = [
     new DiscountDto({
@@ -72,9 +72,7 @@ class InMemoryData {
     })
   ];
 
-  static users: UserRequest[] = [
-
-  ];
+  static users: UserRequest[] = [];
 }
 
 export default InMemoryData;

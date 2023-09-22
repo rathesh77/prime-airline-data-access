@@ -18,9 +18,21 @@ router.post('/book', (req: Request, res: Response) => {
 });
 
 router.get('/booking-history', (req: Request, res: Response) => {
-  const bookingHistory = BookService.getBookingHistory(+req.session.userId!);
- 
+  const bookingHistory = BookService.getBookingHistory(+req.query.userId!);
   res.send(bookingHistory);
+});
+
+router.post('/cancel-book', (req: Request, res: Response) => {
+  const bookingId = BookService.cancelBook(req.body.bookingId);
+  if (bookingId === -1) {
+    res.sendStatus(400);
+    res.send({
+      'code': 'COULD_NOT_DELETE_BOOK',
+      'message': 'Could not delete book with id : ' + req.body.bookingId
+    });
+    return;
+  }
+  res.sendStatus(202);
 });
 
 export default router;
