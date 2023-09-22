@@ -16,6 +16,10 @@ class FlightService {
     return [...InMemoryData.flights];
   }
 
+  static getFlightById(flightId: number): FlightDto | undefined {
+    return InMemoryData.flights.find((f) => f.id === flightId);
+  }
+
 }
 
 export default FlightService;

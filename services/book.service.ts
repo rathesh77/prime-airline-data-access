@@ -26,12 +26,12 @@ class BookService {
 
   static getBookingHistory(userId: number) {
     return InMemoryData.bookingHistory.filter((bookingHistory) => bookingHistory.userId === userId).map((bookingHistory) => {
-        return ({
-          flight: InMemoryData.flights.find((f) => f.id ===bookingHistory.flightId ),
-          date: bookingHistory.date,
-          bookingId: bookingHistory.bookingId
-        });
-      }
+      return ({
+        flight: InMemoryData.flights.find((f) => f.id ===bookingHistory.flightId ),
+        date: bookingHistory.date,
+        bookingId: bookingHistory.bookingId
+      });
+    }
     );
   }
 

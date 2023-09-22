@@ -15,8 +15,9 @@ class InMemoryData {
     return (await parser.parseStringPromise(dataXml.data))['gesmes:Envelope'].Cube[0].Cube[0].Cube;
   })();
 
+  
   static flights: FlightDto[] = [
-    new FlightDto({
+    ({
       'id': 1,
       'airportDeparture': 'CDG',
       'airportArrival': 'JFK',
@@ -25,14 +26,14 @@ class InMemoryData {
       'date': '',
       'isLongDuration': true,
       'meals': [
-        {'name': 'veggie', 'quantity': 45}, 
-        {'name': 'chips', 'quantity': 10},
-        {'name': 'polloSandwich', 'quantity': 8},
-        {'name':  'pasta', 'quantity': 30}
+        { 'name': 'veggie', 'quantity': 45 },
+        { 'name': 'chips', 'quantity': 10 },
+        { 'name': 'polloSandwich', 'quantity': 8 },
+        { 'name': 'pasta', 'quantity': 30 }
       ],
-      'planeId': 1
-    }),
-    new FlightDto({
+      'planeId': 1,
+    }) as FlightDto,
+    ({
       'id': 2,
       'airportDeparture': 'CDG',
       'airportArrival': 'DTW',
@@ -41,14 +42,14 @@ class InMemoryData {
       'date': '',
       'isLongDuration': true,
       'meals': [
-        {'name': 'veggie', 'quantity': 5}, 
-        {'name': 'chips', 'quantity': 10},
-        {'name': 'polloSandwich', 'quantity': 80},
-        {'name':  'pasta', 'quantity': 30}
+        { 'name': 'veggie', 'quantity': 5 },
+        { 'name': 'chips', 'quantity': 10 },
+        { 'name': 'polloSandwich', 'quantity': 80 },
+        { 'name': 'pasta', 'quantity': 30 }
       ],
       'planeId': 2
-    }),
-    new FlightDto({
+    }) as FlightDto,
+    ({
       'id': 3,
       'airportDeparture': 'JFK',
       'airportArrival': 'DTW',
@@ -58,19 +59,31 @@ class InMemoryData {
       'isLongDuration': false,
       'meals': [],
       'planeId': 3
-    }),
+    }) as FlightDto,
+    ({
+      'id': 4,
+      'airportDeparture': 'JFK',
+      'airportArrival': 'DTW',
+      'price': 300,
+      'seats': 2,
+      'date': '',
+      'isLongDuration': false,
+      'meals': [],
+      'planeId': 3,
+      'escale': 'DTW'
+    }) as FlightDto,
   ];
 
+  static discounts: DiscountDto[] = [
+    {
+      originalFlightId: 1,
+      flightId: 4,
+      percent: 10
+    } as DiscountDto
+  ];
 
   static bookingHistory: bookingHistoryDto[] = [];
 
-  static discounts: DiscountDto[] = [
-    new DiscountDto({
-      flightId: InMemoryData.flights.find(flight => flight.id === 1)?.id,
-      escale: 'DTW',
-      percent: 10
-    })
-  ];
 
   static users: UserRequest[] = [];
 }
