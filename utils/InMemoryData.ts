@@ -95,6 +95,22 @@ class InMemoryData {
         'planeId': 3,
         'escale': JFK
       }) as FlightDto,
+      ({
+        'id': 2,
+        'airportDeparture': CDG,
+        'airportArrival': LAD,
+        'price': 600,
+        'seats': 600,
+        'date': '',
+        'isLongDuration': true,
+        'meals': [
+          { 'name': 'veggie', 'quantity': 5 },
+          { 'name': 'chips', 'quantity': 10 },
+          { 'name': 'polloSandwich', 'quantity': 80 },
+          { 'name': 'pasta', 'quantity': 30 }
+        ],
+        'planeId': 2
+      }) as FlightDto
     ];
     InMemoryData.flights = updatedFlights;
   })();
