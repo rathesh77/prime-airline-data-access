@@ -4,3 +4,5 @@ export interface  bookingHistoryDto {
     date: string,
     bookingId: number
 }
+
+export default bookingHistoryDto

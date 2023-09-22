@@ -1,4 +1,4 @@
-import { UserDto } from '../dtos/user.dto';
+import UserDto from '../dtos/user.dto';
 import { UserRequest } from '../request/user.request';
 import InMemoryData from '../utils/InMemoryData';
 

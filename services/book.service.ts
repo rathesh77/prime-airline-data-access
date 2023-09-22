@@ -1,7 +1,7 @@
 import FlightService from './flight.service';
 import BookDto from '../dtos/book.dto';
 import InMemoryData from '../utils/InMemoryData';
-import { bookingHistoryDto } from '../dtos/bookingHistory.dto';
+import BookingHistoryDto from '../dtos/bookingHistory.dto';
 
 class BookService {
 
@@ -14,7 +14,7 @@ class BookService {
       date: bookRequest.date,
       flightId: bookRequest.flightId,
       bookingId: InMemoryData.bookingHistory.length + 1
-    } as bookingHistoryDto;
+    } as BookingHistoryDto;
 
     InMemoryData.bookingHistory.push(book);
     const flight = InMemoryData.flights.find(flight => flight.id == book.flightId);

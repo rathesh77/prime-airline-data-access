@@ -3,7 +3,7 @@ import xml2js from 'xml2js';
 import DiscountDto from '../dtos/discount.dto';
 import FlightDto from '../dtos/flight.dto';
 import { UserRequest } from '../request/user.request';
-import { bookingHistoryDto } from '../dtos/bookingHistory.dto';
+import bookingHistoryDto from '../dtos/bookingHistory.dto';
 
 class InMemoryData {
 
