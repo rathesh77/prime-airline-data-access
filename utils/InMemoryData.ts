@@ -96,7 +96,7 @@ class InMemoryData {
         'escale': JFK
       }) as FlightDto,
       ({
-        'id': 2,
+        'id': 6,
         'airportDeparture': CDG,
         'airportArrival': LAD,
         'price': 600,
